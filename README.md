@@ -13,6 +13,12 @@ mix escript.build
 
 The input_file defaults to 'test_file.txt' in the root of the project.
 
+To run the tests:
+
+```
+mix test
+```
+
 To build the documentation run:
 
 ```
