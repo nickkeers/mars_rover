@@ -24,7 +24,8 @@ defmodule MarsRover.MixProject do
   defp deps do
     [
       {:nimble_parsec, "~> 1.2"},
-      {:ex_doc, "~> 0.27", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 

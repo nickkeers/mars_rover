@@ -44,9 +44,16 @@ defmodule MarsRover.Robot do
       iex> MarsRover.Robot.move({4, 4}, {3, 3}, "N", ["F", "L", "F", "R", "F"])
       "(2, 4, N) LOST"
   """
-  @spec move(bounds :: grid(), grid :: grid(), facing :: String.t(), instructions :: list(String.t())) :: String.t()
+  @spec move(
+          bounds :: grid(),
+          grid :: grid(),
+          facing :: String.t(),
+          instructions :: list(String.t())
+        ) :: String.t()
   def move(_, {x, y}, facing, []), do: "(#{x}, #{y}, #{facing})"
-  def move(bounds, grid, facing, [turn | rest]) when turn == "L" or turn == "R", do: move(bounds, grid, turn(facing, turn), rest)
+
+  def move(bounds, grid, facing, [turn | rest]) when turn == "L" or turn == "R",
+    do: move(bounds, grid, turn(facing, turn), rest)
 
   def move(bounds, grid = {x, y}, facing, ["F" | rest]) do
     if can_move(facing, bounds, grid) do
@@ -73,7 +80,7 @@ defmodule MarsRover.Robot do
       false
   """
   def can_move("N", {_, max_y}, {_, grid_y}), do: grid_y + 1 <= max_y
-  def can_move("E", {max_x, _}, {grid_x, _}), do: (grid_x + 1) <= max_x
+  def can_move("E", {max_x, _}, {grid_x, _}), do: grid_x + 1 <= max_x
   def can_move("S", {_, _}, {_, grid_y}), do: grid_y - 1 >= 0
   def can_move("W", {_, _}, {grid_x, _}), do: grid_x - 1 >= 0
 end

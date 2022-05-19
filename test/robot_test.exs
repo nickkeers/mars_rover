@@ -6,45 +6,55 @@ defmodule MarsRover.RobotTest do
 
   describe "can move a robot using simulate" do
     test "can move a robot east" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 0, y: 0, instructions: ["F"]}) == "(1, 0, E)"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 0, y: 0, instructions: ["F"]}) ==
+               "(1, 0, E)"
     end
 
     test "can move a robot west" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "W", x: 1, y: 0, instructions: ["F"]}) == "(0, 0, W)"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "W", x: 1, y: 0, instructions: ["F"]}) ==
+               "(0, 0, W)"
     end
 
     test "can move a robot south" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "S", x: 0, y: 1, instructions: ["F"]}) == "(0, 0, S)"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "S", x: 0, y: 1, instructions: ["F"]}) ==
+               "(0, 0, S)"
     end
 
     test "can move a robot north" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 0, y: 0, instructions: ["F"]}) == "(0, 1, N)"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 0, y: 0, instructions: ["F"]}) ==
+               "(0, 1, N)"
     end
   end
 
   describe "out of bounds checks" do
     test "the robot reports its last known position when moving out of bounds south" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "S", x: 0, y: 0, instructions: ["F"]}) == "(0, 0, S) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "S", x: 0, y: 0, instructions: ["F"]}) ==
+               "(0, 0, S) LOST"
     end
 
     test "the robot reports its last known position when moving out of bounds north" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 0, y: 4, instructions: ["F"]}) == "(0, 4, N) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 0, y: 4, instructions: ["F"]}) ==
+               "(0, 4, N) LOST"
     end
 
     test "the robot reports its last known position when moving out of bounds east" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 4, y: 0, instructions: ["F"]}) == "(4, 0, E) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 4, y: 0, instructions: ["F"]}) ==
+               "(4, 0, E) LOST"
     end
 
     test "the robot reports its last known position when moving out of bounds west" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "W", x: 0, y: 0, instructions: ["F"]}) == "(0, 0, W) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "W", x: 0, y: 0, instructions: ["F"]}) ==
+               "(0, 0, W) LOST"
     end
 
     test "the robot reports its last known position when moving out of max bounds north" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 4, y: 4, instructions: ["F"]}) == "(4, 4, N) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "N", x: 4, y: 4, instructions: ["F"]}) ==
+               "(4, 4, N) LOST"
     end
 
     test "the robot reports its last known position when moving out of max bounds east" do
-      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 4, y: 4, instructions: ["F"]}) == "(4, 4, E) LOST"
+      assert MarsRover.Robot.simulate({4, 4}, %Robot{facing: "E", x: 4, y: 4, instructions: ["F"]}) ==
+               "(4, 4, E) LOST"
     end
   end
 

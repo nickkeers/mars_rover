@@ -86,7 +86,7 @@ defmodule MarsRoverTest.FileParserTest do
 
     test "fails to parse with a simple error tuple" do
       assert MarsRover.FileParser.parse("4 6\n") ==
-        {:error, :parsing_failure}
+               {:error, :parsing_failure}
     end
   end
 end
